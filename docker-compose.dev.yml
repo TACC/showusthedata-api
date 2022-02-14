@@ -4,6 +4,8 @@ services:
     build: .
     command: uvicorn main:app --host 0.0.0.0 --reload
     container_name: showusthedata_api
+    env_file:
+      - .env
     volumes:
       - ./src/:/app/
     ports:
