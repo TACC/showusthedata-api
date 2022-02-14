@@ -82,3 +82,23 @@ class Publication(BaseModel):
         title='Journal',
         description='The name of the publication'
     )
+
+class Author(BaseModel):
+    """
+    An author
+    """
+    author_id: int = Field(
+        None,
+        title='Author',
+        description='The unique ID of an author',
+    )
+    given_name: str = Field(
+        None,
+        title='Given Name',
+        description="The author's given name"
+    )
+    family_name: str = Field(
+        None,
+        title='Family Name',
+        description="The author's familiy name"
+    )

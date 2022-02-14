@@ -1,1 +1,1 @@
-from .topics import get_topics, get_topic_publications
+from .topics import get_topics, get_topic_publications, get_topic_authors
