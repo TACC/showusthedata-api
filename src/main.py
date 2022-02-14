@@ -4,7 +4,7 @@ import os
 import logging
 import sys
 import database
-from database.models import Topic
+from database.models import Topic, Publication
 
 # Set up logging
 logger = logging.getLogger()
@@ -28,4 +28,9 @@ def read_root():
 @app.get("/topics", response_model=list[Topic])
 def get_topics():
     results = database.get_topics()
+    return results
+
+@app.get("/topics/{topic_id}/publications", response_model=list[Publication])
+def get_topic_publications(topic_id: int):
+    results = database.get_topic_publications(topic_id)
     return results
