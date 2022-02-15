@@ -34,7 +34,7 @@ jobs:
         name: Build & push commit tagged Docker image
         with:
           image: ${{ secrets.DOCKERHUB_REPO }}
-          tag: latest   
+          tag: main   
           registry: docker.io
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKERHUB_USERNAME }}
