@@ -9,5 +9,13 @@ from .authors import (
     get_authors,
     get_author_datasets,
     get_author_publications,
-    get_author_topics
+    get_author_topics,
+)
+
+from .datasets import (
+    get_datasets,
+    get_dataset_aliases,
+    get_dataset_topics,
+    get_dataset_authors,
+    get_dataset_publications,
 )

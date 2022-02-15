@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from pydantic import BaseModel, Field
+from enum import Enum
 
 
 class Topic(BaseModel):
@@ -105,4 +106,23 @@ class Dataset(BaseModel):
     )
     alias: str = Field(
         None, title="Alias", description="The identifying alias or name of a dataset"
+    )
+
+
+class AliasType(str, Enum):
+    alias = "alias"
+    main = "main"
+
+
+class Alias(BaseModel):
+    """
+    A dataset alias
+    """
+
+    alias_id: int = Field(
+        None, title="Alias ID", description="A unique ID that corresponds to an alias"
+    )
+    alias: str = Field(None, title="Alias", description="The name of a dataset alias")
+    alias_type: AliasType = Field(
+        None, title="Alias Type", description="The type of alias. This can be "
     )

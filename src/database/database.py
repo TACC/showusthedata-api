@@ -22,6 +22,7 @@ logger.debug("Initializing PostgreSQL connection")
 SQLALCHEMY_DATABASE_URL = f"postgresql://{SHOWUSTHEDATADBUSERNAME}:{SHOWUSTHEDATADBPASSWORD}@{SHOWUSTHEDATADBHOST}:{SHOWUSTHEDATADBPORT}/{SHOWUSTHEDATADBNAME}"
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
+
 def run_procedure(procedure: str, parameters: list) -> list[tuple]:
     connection = engine.raw_connection()
     try:

@@ -11,13 +11,19 @@ def get_topics() -> list[Topic]:
 
 
 def get_topic_publications(topic_id: int) -> list[Publication]:
-    return [create_publication(row) for row in run_procedure("get_topic_publications", [topic_id])]
+    return [
+        create_publication(row)
+        for row in run_procedure("get_topic_publications", [topic_id])
+    ]
 
 
 def get_topic_authors(topic_id: int) -> list[Author]:
-    return [create_author(row) for row in run_procedure("get_topic_authors", [topic_id])]
+    return [
+        create_author(row) for row in run_procedure("get_topic_authors", [topic_id])
+    ]
 
 
 def get_topic_datasets(topic_id: int) -> list[Dataset]:
-    return [create_dataset(row) for row in run_procedure("get_topic_datasets", [topic_id])]
-
+    return [
+        create_dataset(row) for row in run_procedure("get_topic_datasets", [topic_id])
+    ]

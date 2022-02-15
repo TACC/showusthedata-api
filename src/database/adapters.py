@@ -1,4 +1,4 @@
-from .models import Topic, Publication, Author, Dataset
+from .models import Topic, Publication, Author, Dataset, Alias
 
 
 def create_topic(row: tuple[int, int, str]) -> Topic:
@@ -25,3 +25,7 @@ def create_author(row: tuple[int, str, str]):
 
 def create_dataset(row: tuple[int, str]):
     return Dataset(alias_id=row[0], alias=row[1])
+
+
+def create_alias(row: tuple[int, str, str]):
+    return Alias(alias_id=row[0], alias=row[1], alias_type=row[2])
