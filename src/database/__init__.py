@@ -19,3 +19,10 @@ from .datasets import (
     get_dataset_authors,
     get_dataset_publications,
 )
+
+from .publications import (
+    get_publications,
+    get_publication_topics,
+    get_publication_authors,
+    get_publication_datasets,
+)

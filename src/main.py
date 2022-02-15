@@ -27,6 +27,7 @@ tags_metadata = [
         "description": "Operations with authors",
     },
     {"name": "datasets", "description": "Operations with datasets"},
+    {"name": "publications", "description": "Operations with publications"},
 ]
 
 
@@ -91,21 +92,65 @@ def get_datasets():
     return database.get_datasets()
 
 
-@app.get("/datasets/{parent_alias_id}/aliases", tags=["datasets"])
+@app.get(
+    "/datasets/{parent_alias_id}/aliases", response_model=list[Alias], tags=["datasets"]
+)
 def get_dataset_aliases(parent_alias_id: int):
     return database.get_dataset_aliases(parent_alias_id)
 
 
-@app.get("/datasets/{parent_alias_id}/publications", tags=["datasets"])
+@app.get(
+    "/datasets/{parent_alias_id}/publications",
+    response_model=list[Publication],
+    tags=["datasets"],
+)
 def get_dataset_publications(parent_alias_id: int):
     return database.get_dataset_publications(parent_alias_id)
 
 
-@app.get("/datasets/{parent_alias_id}/topics", tags=["datasets"])
+@app.get(
+    "/datasets/{parent_alias_id}/topics", response_model=list[Topic], tags=["datasets"]
+)
 def get_dataset_topics(parent_alias_id: int):
     return database.get_dataset_topics(parent_alias_id)
 
 
-@app.get("/datasets/{parent_alias_id}/authors", tags=["datasets"])
+@app.get(
+    "/datasets/{parent_alias_id}/authors",
+    response_model=list[Author],
+    tags=["datasets"],
+)
 def get_dataset_authors(parent_alias_id: int):
     return database.get_dataset_authors(parent_alias_id)
+
+
+@app.get("/publications", response_model=list[Publication], tags=["publications"])
+def get_publications():
+    return database.get_publications()
+
+
+@app.get(
+    "/publications/{publication_id}/topics",
+    response_model=list[Topic],
+    tags=["publications"],
+)
+def get_publication_topics(publication_id: int):
+    return database.get_publication_topics(publication_id)
+
+
+@app.get(
+    "/publications/{publication_id}/authors",
+    response_model=list[Author],
+    tags=["publications"],
+)
+def get_publication_authors(publication_id: int):
+    return database.get_publication_authors(publication_id)
+
+
+@app.get(
+    "/publications/{publication_id}/datasets",
+    response_model=list[Dataset],
+    tags=["publications"],
+)
+def get_publication_datasets(publication_id: int):
+    return database.get_publication_datasets(publication_id)
