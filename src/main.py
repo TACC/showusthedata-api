@@ -16,6 +16,19 @@ LOGLEVEL = os.environ.get("LOGLEVEL", "INFO")
 logger.setLevel(LOGLEVEL)
 logger.error(f"Log level {LOGLEVEL}")
 
+# Load environment files
+POSTGRES_HOST = os.environ.get("POSTGRES_HOST")
+POSTGRES_PORT = os.environ.get("POSTGRES_PORT")
+POSTGRES_USER = os.environ.get("POSTGRES_USER")
+POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD")
+POSTGRES_DB = os.environ.get("POSTGRES_DB")
+logger.debug(
+    f"Environment: {POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
+)
+
+# Initialize database
+logger.debug("Initializing PostgreSQL connection")
+
 
 tags_metadata = [
     {
