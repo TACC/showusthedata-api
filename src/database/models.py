@@ -1,6 +1,8 @@
 from datetime import datetime
+from types import NoneType
 
 from pydantic import BaseModel, Field
+from typing import Union
 from enum import Enum
 
 
@@ -26,6 +28,17 @@ class Topic(BaseModel):
         title="Keyword",
         description="The keyword for a topic",
         example="Water Quality",
+    )
+    score: Union[float, NoneType] = Field(
+        None, title="Score", description="Relevance score"
+    )
+    source_id: Union[int, NoneType] = Field(
+        None,
+        title="Source ID",
+        description="A unique ID identifying the metadata source",
+    )
+    organization_name: Union[str, NoneType] = Field(
+        None, title="Organization Name", description="An organization name"
     )
 
 
