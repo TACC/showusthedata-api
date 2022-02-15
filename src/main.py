@@ -12,7 +12,7 @@ streamHandler = logging.StreamHandler(sys.stdout)
 formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 streamHandler.setFormatter(formatter)
 logger.addHandler(streamHandler)
-LOGLEVEL = os.environ.get("LOGLEVEL")
+LOGLEVEL = os.environ.get("LOGLEVEL", "INFO")
 logger.setLevel(LOGLEVEL)
 logger.error(f"Log level {LOGLEVEL}")
 
