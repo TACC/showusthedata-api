@@ -21,3 +21,15 @@ logger.debug(
 logger.debug("Initializing PostgreSQL connection")
 SQLALCHEMY_DATABASE_URL = f"postgresql://{SHOWUSTHEDATADBUSERNAME}:{SHOWUSTHEDATADBPASSWORD}@{SHOWUSTHEDATADBHOST}:{SHOWUSTHEDATADBPORT}/{SHOWUSTHEDATADBNAME}"
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
+
+def run_procedure(procedure: str, parameters: list) -> list[tuple]:
+    connection = engine.raw_connection()
+    try:
+        cursor_obj = connection.cursor()
+        cursor_obj.callproc(procedure, parameters)
+        rows = list(cursor_obj.fetchall())
+        cursor_obj.close()
+        connection.commit()
+        return rows
+    finally:
+        connection.close()
